@@ -1,6 +1,6 @@
 {
-    "name": "hurad/users-plugin",
-    "description": "Users plugin for Hurad",
+    "name": "phpie/users-plugin",
+    "description": "Users plugin for PHP Pie",
     "type": "cakephp-plugin",
     "require": {
         "php": ">=5.4.16",
@@ -11,7 +11,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Users\\": "src"
+            "Pie\\Users\\": "src"
         }
     },
     "autoload-dev": {
