@@ -1,6 +1,6 @@
 <?php
 
-namespace Users\Model\Table;
+namespace Pie\Users\Model\Table;
 
 use Cake\ORM\Table;
 

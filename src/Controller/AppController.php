@@ -1,6 +1,6 @@
 <?php
 
-namespace Users\Controller;
+namespace Pie\Users\Controller;
 
 use App\Controller\AppController as BaseController;
 use Cake\Core\Configure;

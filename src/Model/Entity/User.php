@@ -1,6 +1,6 @@
 <?php
 
-namespace Users\Model\Entity;
+namespace Pie\Users\Model\Entity;
 
 use Cake\ORM\Entity;
 

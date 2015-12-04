@@ -1,12 +1,11 @@
 <?php
 
-namespace Users\Mailer;
+namespace Pie\Users\Mailer;
 
 use Cake\Core\Configure;
 use Cake\Mailer\Email;
 use Cake\Mailer\Mailer;
-use Cake\Routing\Router;
-use Users\Model\Entity\User;
+use Pie\Users\Model\Entity\User;
 
 /**
  * User Mailer

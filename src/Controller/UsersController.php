@@ -1,6 +1,6 @@
 <?php
 
-namespace Users\Controller;
+namespace Pie\Users\Controller;
 
 use Cake\Auth\PasswordHasherFactory;
 use Cake\Core\Configure;
@@ -12,10 +12,10 @@ use Cake\ORM\TableRegistry;
 use Cake\Routing\Router;
 use Cake\Utility\Security;
 use Cake\Validation\Validator;
-use Users\Model\Entity\User;
-use Users\Model\Entity\UserDetail;
-use Users\Model\Table\UserDetailsTable;
-use Users\Model\Table\UsersTable;
+use Pie\Users\Model\Entity\User;
+use Pie\Users\Model\Entity\UserDetail;
+use Pie\Users\Model\Table\UserDetailsTable;
+use Pie\Users\Model\Table\UsersTable;
 
 /**
  * Users Controller
