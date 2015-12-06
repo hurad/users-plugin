@@ -2,4 +2,4 @@
 
 use Cake\Core\Configure;
 
-Configure::load('Users.config', 'default', false);
+Configure::load('Pie/Users.config', 'default', false);
