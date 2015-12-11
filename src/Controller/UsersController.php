@@ -151,12 +151,12 @@ class UsersController extends AppController
                     ->set('email', $this->request->data('email'))
                     ->set(
                         'password',
-                        PasswordHasherFactory::build(Configure::read('users.passwordHasher'))
+                        PasswordHasherFactory::build(Configure::read('pie.users.passwordHasher'))
                             ->hash($this->request->data('password'))
                     )
                     ->set('status', 0);
 
-                if ('email' === Configure::read('users.activationStrategy')) {
+                if ('email' === Configure::read('pie.users.activationStrategy')) {
                     $activationKey = Security::hash(microtime(true), 'sha256', true);
                     $activationUrl = Router::url([
                         '_full' => true,
@@ -520,7 +520,7 @@ class UsersController extends AppController
             if (empty($errors)) {
                 $user->set(
                     'password',
-                    PasswordHasherFactory::build(Configure::read('users.passwordHasher'))
+                    PasswordHasherFactory::build(Configure::read('pie.users.passwordHasher'))
                         ->hash($this->request->data('new_password'))
                 );
 

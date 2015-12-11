@@ -30,18 +30,14 @@ class AppController extends BaseController
                     ]
                 ],
                 'loginAction' => [
+                    'plugin' => 'Pie/Users',
                     'controller' => 'Users',
                     'action' => 'login',
                     'prefix' => false
                 ],
-                'loginRedirect' => Configure::read('users.auth.loginRedirect'),
-                'logoutAction' => [
-                    'controller' => 'Users',
-                    'action' => 'logout',
-                    'prefix' => false
-                ],
-                'logoutRedirect' => Configure::read('users.auth.logoutRedirect'),
-                'unauthorizedRedirect' => Configure::read('users.auth.unauthorizedRedirect'),
+                'loginRedirect' => Configure::read('pie.users.auth.loginRedirect'),
+                'logoutRedirect' => Configure::read('pie.users.auth.logoutRedirect'),
+                'unauthorizedRedirect' => Configure::read('pie.users.auth.unauthorizedRedirect'),
                 'authorize' => ['Controller'],
                 'flash' => ['element' => 'error']
             ]

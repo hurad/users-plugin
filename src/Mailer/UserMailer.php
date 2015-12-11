@@ -19,7 +19,7 @@ class UserMailer extends Mailer
      */
     public function welcome(User $user)
     {
-        $this->from(Configure::read('users.emailFrom'))
+        $this->from(Configure::read('pie.users.emailFrom'))
             ->to($user->get('email'))
             ->subject(__('Welcome "{0}"', $user->get('username')))
             ->template('Pie/Users.register')
@@ -33,7 +33,7 @@ class UserMailer extends Mailer
 
     public function activation(User $user)
     {
-        $this->from(Configure::read('users.emailFrom'))
+        $this->from(Configure::read('pie.users.emailFrom'))
             ->to($user->get('email'))
             ->subject(__('Activation account'))
             ->template('Pie/Users.activation')
@@ -48,7 +48,7 @@ class UserMailer extends Mailer
 
     public function forgot(User $user)
     {
-        $this->from(Configure::read('users.emailFrom'))
+        $this->from(Configure::read('pie.users.emailFrom'))
             ->to($user->get('email'))
             ->subject(__('Reset Password'))
             ->template('Pie/Users.forgot')
