@@ -21,7 +21,9 @@ return [
                     'action' => 'login',
                     'prefix' => false
                 ],
-                'unauthorizedRedirect' => '/'
+                'unauthorizedRedirect' => '/',
+                'authError' => __d('users', 'You are not authorized to access that location.'),
+                'flash' => ['element' => 'error']
             ]
         ]
     ]

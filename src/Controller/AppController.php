@@ -38,8 +38,9 @@ class AppController extends BaseController
                 'loginRedirect' => Configure::read('pie.users.auth.loginRedirect'),
                 'logoutRedirect' => Configure::read('pie.users.auth.logoutRedirect'),
                 'unauthorizedRedirect' => Configure::read('pie.users.auth.unauthorizedRedirect'),
+                'authError' => Configure::read('pie.users.auth.authError'),
                 'authorize' => ['Controller'],
-                'flash' => ['element' => 'error']
+                'flash' => Configure::read('pie.users.auth.flash')
             ]
         );
     }
