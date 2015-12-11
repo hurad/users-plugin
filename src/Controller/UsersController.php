@@ -99,7 +99,7 @@ class UsersController extends AppController
     {
         $this->set('title', __d('users', 'Register'));
         /** @var $usersTable UsersTable */
-        $usersTable = TableRegistry::get('Users.Users');
+        $usersTable = TableRegistry::get('Pie/Users.Users');
 
         /** @var User $user */
         $user = $usersTable->newEntity();
@@ -160,7 +160,7 @@ class UsersController extends AppController
                     $activationKey = Security::hash(microtime(true), 'sha256', true);
                     $activationUrl = Router::url([
                         '_full' => true,
-                        'plugin' => 'Users',
+                        'plugin' => 'Pie/Users',
                         'controller' => 'Users',
                         'action' => 'verify',
                         $activationKey
@@ -182,12 +182,12 @@ class UsersController extends AppController
                             'value' => $detailValue
                         ]);
                     }
-
-                    $user->set('details', $detailsData);
                 }
 
+                $user->set('details', $detailsData);
+
                 if ($usersTable->save($user)) {
-                    $this->getMailer('Users.User')
+                    $this->getMailer('Pie/Users.User')
                         ->set($emailData)
                         ->send('welcome', [$user]);
 
@@ -218,7 +218,7 @@ class UsersController extends AppController
     public function verify($key = null)
     {
         /** @var $usersTable UsersTable */
-        $usersTable = TableRegistry::get('Users.Users');
+        $usersTable = TableRegistry::get('Pie/Users.Users');
 
         /** @var $user User */
         $user = $usersTable->find()
@@ -241,7 +241,7 @@ class UsersController extends AppController
         try {
             if ($usersTable->save($user)) {
                 /** @var $userDetailsTable UserDetailsTable */
-                $userDetailsTable = TableRegistry::get('Users.UserDetails');
+                $userDetailsTable = TableRegistry::get('Pie/Users.UserDetails');
                 $userDetailsTable->delete($user->get('_matchingData')['UserDetails']);
                 $usersTable->connection()->commit();
 
@@ -267,7 +267,7 @@ class UsersController extends AppController
         $this->set('title', __d('users', 'Resend activation email'));
 
         /** @var $usersTable UsersTable */
-        $usersTable = TableRegistry::get('Users.Users');
+        $usersTable = TableRegistry::get('Pie/Users.Users');
 
         /** @var User $user */
         $user = $usersTable->newEntity();
@@ -305,7 +305,7 @@ class UsersController extends AppController
 
                 $done = false;
                 if (array_key_exists('activation_key', $user->getDetails())) {
-                    $userDetailsTable = TableRegistry::get('Users.UserDetails');
+                    $userDetailsTable = TableRegistry::get('Pie/Users.UserDetails');
                     if ($userDetailsTable->updateAll(
                         ['value' => $activationKey],
                         ['id' => $user->getDetails()['activation_key']->id]
@@ -331,13 +331,13 @@ class UsersController extends AppController
                 }
 
                 if ($done) {
-                    $this->getMailer('Users.User')
+                    $this->getMailer('Pie/Users.User')
                         ->set(
                             [
                                 'activationKey' => $activationKey,
                                 'activationUrl' => Router::url([
                                     '_full' => true,
-                                    'plugin' => 'Users',
+                                    'plugin' => 'Pie/Users',
                                     'controller' => 'Users',
                                     'action' => 'verify',
                                     $activationKey
@@ -364,7 +364,7 @@ class UsersController extends AppController
         $this->set('title', __d('users', 'Forgot password'));
 
         /** @var $usersTable UsersTable */
-        $usersTable = TableRegistry::get('Users.Users');
+        $usersTable = TableRegistry::get('Pie/Users.Users');
 
         /** @var User $user */
         $user = $usersTable->newEntity();
@@ -402,7 +402,7 @@ class UsersController extends AppController
 
                 $done = false;
                 if (array_key_exists('reset_key', $user->getDetails())) {
-                    $userDetailsTable = TableRegistry::get('Users.UserDetails');
+                    $userDetailsTable = TableRegistry::get('Pie/Users.UserDetails');
                     if ($userDetailsTable->updateAll(
                         ['value' => $resetKey],
                         ['id' => $user->getDetails()['reset_key']->id]
@@ -428,13 +428,13 @@ class UsersController extends AppController
                 }
 
                 if ($done) {
-                    $this->getMailer('Users.User')
+                    $this->getMailer('Pie/Users.User')
                         ->set(
                             [
                                 'resetKey' => $resetKey,
                                 'resetUrl' => Router::url([
                                     '_full' => true,
-                                    'plugin' => 'Users',
+                                    'plugin' => 'Pie/Users',
                                     'controller' => 'Users',
                                     'action' => 'reset',
                                     $resetKey
@@ -469,7 +469,7 @@ class UsersController extends AppController
         $this->set('title', __('Reset Password'));
 
         /** @var $usersTable UsersTable */
-        $usersTable = TableRegistry::get('Users.Users');
+        $usersTable = TableRegistry::get('Pie/Users.Users');
 
         /** @var $user User */
         $user = $usersTable->find()
@@ -526,7 +526,7 @@ class UsersController extends AppController
 
                 if ($usersTable->save($user)) {
                     /** @var $userDetailsTable UserDetailsTable */
-                    $userDetailsTable = TableRegistry::get('Users.UserDetails');
+                    $userDetailsTable = TableRegistry::get('Pie/Users.UserDetails');
                     $userDetailsTable->delete($user->getDetails()['reset_key']);
 
                     $this->Flash->set(__('Your password has been reset successfully.'), ['element' => 'success']);

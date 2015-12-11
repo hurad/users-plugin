@@ -15,7 +15,7 @@ return [
                 'home'
             ],
             'logoutRedirect' => [
-                'plugin' => 'users',
+                'plugin' => 'Pie/Users',
                 'controller' => 'Users',
                 'action' => 'login',
                 'prefix' => false

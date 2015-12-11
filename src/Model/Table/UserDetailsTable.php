@@ -19,7 +19,7 @@ class UserDetailsTable extends Table
         $this->belongsTo(
             'Users',
             [
-                'className' => 'Users.User',
+                'className' => 'Pie/Users.User',
                 'foreignKey' => 'user_id',
                 'propertyName' => 'user'
             ]

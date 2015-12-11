@@ -31,7 +31,7 @@ class UsersTable extends Table
         $this->hasMany(
             'UserDetails',
             [
-                'className' => 'Users.UserDetails',
+                'className' => 'Pie/Users.UserDetails',
                 'foreignKey' => 'user_id',
                 'dependent' => true,
                 'propertyName' => 'details'

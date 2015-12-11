@@ -22,7 +22,7 @@ class UserMailer extends Mailer
         $this->from(Configure::read('users.emailFrom'))
             ->to($user->get('email'))
             ->subject(__('Welcome "{0}"', $user->get('username')))
-            ->template('Users.register')
+            ->template('Pie/Users.register')
             ->emailFormat(Email::MESSAGE_HTML)
             ->set(
                 [
@@ -36,7 +36,7 @@ class UserMailer extends Mailer
         $this->from(Configure::read('users.emailFrom'))
             ->to($user->get('email'))
             ->subject(__('Activation account'))
-            ->template('Users.activation')
+            ->template('Pie/Users.activation')
             ->emailFormat(Email::MESSAGE_HTML)
             ->set(
                 [
@@ -51,7 +51,7 @@ class UserMailer extends Mailer
         $this->from(Configure::read('users.emailFrom'))
             ->to($user->get('email'))
             ->subject(__('Reset Password'))
-            ->template('Users.forgot')
+            ->template('Pie/Users.forgot')
             ->emailFormat(Email::MESSAGE_HTML)
             ->set(
                 [
