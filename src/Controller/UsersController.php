@@ -33,7 +33,7 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
 
-        $this->Auth->allow(['register', 'login', 'logout', 'verify', 'resendActivationEmail', 'forgot', 'reset']);
+        $this->UsersAuth->allow(['register', 'login', 'logout', 'verify', 'resendActivationEmail', 'forgot', 'reset']);
     }
 
     /**
@@ -43,14 +43,14 @@ class UsersController extends AppController
     {
         $this->set('title', __d('users', 'Login'));
 
-        if ($this->Auth->user()) {
+        if ($this->UsersAuth->user()) {
             $this->Flash->set(__d('users', 'You already logged in.'));
 
-            return $this->redirect($this->Auth->config('loginRedirect'));
+            return $this->redirect($this->UsersAuth->config('loginRedirect'));
         } else {
             if ($this->request->is('post')) {
-                if ($user = $this->Auth->identify()) {
-                    $this->Auth->setUser($user);
+                if ($user = $this->UsersAuth->identify()) {
+                    $this->UsersAuth->setUser($user);
                     $this->request->session()->delete('Message.auth');
 
                     if (!$this->request->data('remember_me')) {
@@ -64,7 +64,7 @@ class UsersController extends AppController
 
                     $this->Flash->set(__d('users', 'You have successfully logged in'), ['element' => 'success']);
 
-                    return $this->redirect($this->Auth->redirectUrl());
+                    return $this->redirect($this->UsersAuth->redirectUrl());
                 }
                 $this->Flash->set(
                     __d('users', 'Your email or password was incorrect or your account is inactive.'),
@@ -79,11 +79,11 @@ class UsersController extends AppController
      */
     public function logout()
     {
-        if ($this->Auth->user()) {
+        if ($this->UsersAuth->user()) {
             $this->request->session()->destroy();
             $this->Cookie->delete('Auth.User');
             $this->Flash->set(__d('users', 'You are successfully logged out'), ['element' => 'success']);
-            $this->redirect($this->Auth->logout());
+            $this->redirect($this->UsersAuth->logout());
         } else {
             $this->Flash->set(__d('users', 'You already logged out.'), ['element' => 'error']);
             $this->redirect($this->request->referer());
